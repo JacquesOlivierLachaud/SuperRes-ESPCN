@@ -48,6 +48,25 @@ usage: sr-image.py [-h] --input_image INPUT_IMAGE --model MODEL
                    [--output_filename OUTPUT_FILENAME]
 ```
 
-The upscale factor is determined by the given model.
+The upscale factor is determined by the given model. You can also use `interp-image.py` to do super-resolution with a standard interpolation function (NEAREST, BILINEAR, BICUBIC).
+
+```
+python3 interp-image.py
+usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLATION]
+                       [--upscale_factor UPSCALE_FACTOR]
+                       [--output_filename OUTPUT_FILENAME]
+```
+
+<table>
+<tr>
+<td> <b> Original </b> </td>
+<td> <b> ESPCN </b> </td>
+<td> <b> BICUBIC </b> </td>
+</tr>
+<tr>
+<td> <img src="images/mario-yoshi.png"> </td>
+<td> <img src="images/mario-yoshi-up3-espcn.png"> </td>
+<td> <img src="images/mario-yoshi-up3-bicubic.png"> </td>
+</tr>
 
 ## Datasets
