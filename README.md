@@ -83,10 +83,10 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 </tr>
 <tr>
 <td> <img src="images/papillon.png"> </td>
-<td> <img src="images/papillon-up3-espcn.png"> </td>
-<td> <img src="images/papillon-up3-bicubic.png"> </td>
-<td> <img src="images/papillon-up3-bilinear.png"> </td>
-<td> <img src="images/papillon-up3-nearest.png"> </td>
+<td> <img src="images/papillon-x3-espcn.png"> </td>
+<td> <img src="images/papillon-x3-bicubic.png"> </td>
+<td> <img src="images/papillon-x3-bilinear.png"> </td>
+<td> <img src="images/papillon-x3-nearest.png"> </td>
 </tr>
 </table>
 
