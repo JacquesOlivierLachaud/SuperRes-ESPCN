@@ -137,8 +137,24 @@ then BSDS300 plus 100 random images from COCO test for testing.
 
 ## Training
 
+By default, it trains on
+[BSDS300](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/)
+dataset. You may switch to another dataset by specifying a path to a
+dataset. We have use COCO here.
+
 ```
 python train.py --upscale_factor 3 --nEpochs 1000 --train_with_coco True --run_name "stanh" --batchSize 128
 ```
 
-55 minutes per epoch on MacBook M2 Pro with metal device (mps).
+**Upscale factor 3**
+
+It took approximatively 55 minutes per epoch on MacBook M2 Pro with
+metal device (mps) for COCO with batch size 128.
+
+> Loss/PSNR graphs
+
+<table>
+<tr>
+<td> <img src="graphs/epoch average loss.svg"> </td>
+</tr>
+</table>
