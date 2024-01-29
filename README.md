@@ -160,6 +160,6 @@ metal device (mps) for COCO with batch size 128.
 </tr>
 <tr>
 <td> <img src="graphs/epoch average loss.png"> </td>
-<td> <img src="graphs/epoch average PSNR.png"> </td>
+<td> <img src="graphs/epoch average psnr.png"> </td>
 </tr>
 </table>
