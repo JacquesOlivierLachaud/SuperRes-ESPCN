@@ -62,11 +62,15 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> Original </b> </td>
 <td> <b> ESPCN </b> </td>
 <td> <b> BICUBIC </b> </td>
+<td> <b> BILINEAR </b> </td>
+<td> <b> NEAREST </b> </td>
 </tr>
 <tr>
 <td> <img src="images/mario-yoshi.png"> </td>
 <td> <img src="images/mario-yoshi-up3-espcn.png"> </td>
 <td> <img src="images/mario-yoshi-up3-bicubic.png"> </td>
+<td> <img src="images/mario-yoshi-up3-bilinear.png"> </td>
+<td> <img src="images/mario-yoshi-up3-nearest.png"> </td>
 </tr>
 
 ## Datasets
