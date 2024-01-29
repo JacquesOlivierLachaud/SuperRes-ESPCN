@@ -82,6 +82,22 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> NEAREST </b> </td>
 </tr>
 <tr>
+<td> <img src="images/urban.png"> </td>
+<td> <img src="images/urban-x3-espcn.png"> </td>
+<td> <img src="images/urban-x3-bicubic.png"> </td>
+<td> <img src="images/urban-x3-bilinear.png"> </td>
+<td> <img src="images/urban-x3-nearest.png"> </td>
+</tr>
+</table>
+<table>
+<tr>
+<td> <b> Original </b> </td>
+<td> <b> ESPCN </b> </td>
+<td> <b> BICUBIC </b> </td>
+<td> <b> BILINEAR </b> </td>
+<td> <b> NEAREST </b> </td>
+</tr>
+<tr>
 <td> <img src="images/papillon.png"> </td>
 <td> <img src="images/papillon-x3-espcn.png"> </td>
 <td> <img src="images/papillon-x3-bicubic.png"> </td>
@@ -118,3 +134,11 @@ method. You may use the following keys:
 
 We use [COCO](https://cocodataset.org/#home) dataset for training,
 then BSDS300 plus 100 random images from COCO test for testing.
+
+## Training
+
+```
+python train.py --upscale_factor 3 --nEpochs 1000 --train_with_coco True --run_name "stanh" --batchSize 128
+```
+
+55 minutes per epoch on MacBook M2 Pro with metal device (mps).
