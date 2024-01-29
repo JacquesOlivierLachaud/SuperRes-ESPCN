@@ -90,7 +90,31 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 </tr>
 </table>
 
+### Video camera super-resolution
+
+```
+python3 sr-video.py
+usage: sr-video.py [-h] --model MODEL
+```
+
+This script opens your camera, sets its resolution to 1280x720, then
+let you downsample the stream and choose your super-resolution
+method. You may use the following keys:
+
+```
+- 'q': quits
+- '0': no down-sampling
+- '1': one downsampling, then one super-resolution
+- '2': two downsamplings, then two super-resolutions
+- 's': super-resolution with ESPCN
+- 'n': super-resolution with nearest-neighbor interpolation
+- 'l': super-resolution with bilinear interpolation
+- 'c': super-resolution with bicubic interpolation
+- '+': zoom-in
+- '+': zoom-out
+```
 
 ## Datasets
 
-We use COCO for training
+We use [COCO](https://cocodataset.org/#home) dataset for training,
+then BSDS300 plus 100 random images from COCO test for testing.

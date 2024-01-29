@@ -88,6 +88,12 @@ def superres_doubled( model, device, cv_image ):
     return output
 
 
+
+# Training settings
+parser = argparse.ArgumentParser(description='Super-Resolution with ESPCN video')
+parser.add_argument('--model', type=str, required=True, help='model file to use')
+opt = parser.parse_args()
+
 # Get cpu, gpu or mps device for training.
 device = (
     "cuda"
@@ -97,11 +103,6 @@ device = (
     else "cpu"
 )
 print(f"===> Using {device} device")
-
-# Training settings
-parser = argparse.ArgumentParser(description='PyTorch Super Res video')
-parser.add_argument('--model', type=str, required=True, help='model file to use')
-opt = parser.parse_args()
 
 print(f"===> Loading model {opt.model}")
 model = torch.load(opt.model)
