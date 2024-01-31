@@ -55,10 +55,13 @@ def target_transform(crop_size):
     ])
 
 
-def get_training_set(upscale_factor, coco=False ):
-    root_dir  = download_bsd300() 
-    train_dir = join(root_dir, "train") if not coco else "/Users/lachaud/Data/COCO/train2017"
-    print( root_dir, train_dir )
+def get_training_set(upscale_factor, path ):
+    if ( path == '' ):
+        root_dir  = download_bsd300() 
+        train_dir = join(root_dir, "train")
+    else:
+        train_dir = path
+    print( f'===> train_path={train_dir}' )
     crop_size = calculate_valid_crop_size(256, upscale_factor)
 
     return DatasetFromFolder(train_dir,
@@ -66,10 +69,13 @@ def get_training_set(upscale_factor, coco=False ):
                              target_transform=target_transform(crop_size))
 
 
-def get_test_set(upscale_factor, coco=False ):
-    root_dir = download_bsd300()
-    test_dir = join(root_dir, "test")if not coco else "/Users/lachaud/Data/COCO/test2017"
-    print( root_dir, test_dir )
+def get_test_set(upscale_factor, path ):
+    if ( path == '' ):
+        root_dir = download_bsd300() 
+        test_dir = join(root_dir, "test")
+    else:
+        test_dir = path
+    print( f'===> test_path={test_dir}' )
     crop_size = calculate_valid_crop_size(256, upscale_factor)
 
     return DatasetFromFolder(test_dir,

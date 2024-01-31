@@ -14,8 +14,7 @@ implementation](https://github.com/leftthomas/ESPCN).
 - [Anaconda](https://www.anaconda.com/download/)
 - [PyTorch](https://pytorch.org)
 ```
-conda install pytorch torchvision -c soumith
-conda install pytorch torchvision cuda80 -c soumith # install it if you have installed cuda
+conda install pytorch torchvision
 ```
 - [TensorBoard](https://www.tensorflow.org/tensorboard)
 ```
@@ -148,8 +147,8 @@ python train.py --upscale_factor 3 --nEpochs 1000 --train_with_coco True --run_n
 
 **Upscale factor 3**
 
-It took approximatively 55 minutes per epoch on MacBook M2 Pro with
-metal device (mps) for COCO with batch size 128.
+It took approximatively 55 minutes per epoch on MacBook Pro, M2 Max chip, GPU 30 cores, with
+metal 3 device (mps) for COCO with batch size 128.
 
 > Loss/PSNR graphs
 

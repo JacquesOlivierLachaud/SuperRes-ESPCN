@@ -1,8 +1,10 @@
 from __future__ import print_function
 import argparse
 import torch
+import torch.nn as nn
 from PIL import Image
 from torchvision.transforms import ToTensor
+import math
 import numpy as np
 import cv2
 
@@ -119,14 +121,14 @@ if not cap.isOpened():
     print("Cannot open camera")
     exit()
 
-upscale = 3
+upscale   = 3
 # nb= 0 : no superres, 1 : once sr, 2 : twice sr
-nb      = 0
+nb        = 0
 # mode= 0 : ESPCN, 1 : NEAREST, 2 : LINEAR, 3 : BICUBIC
-mode    = 0 
-zoom    = 1.0
-font    = cv2.FONT_HERSHEY_SIMPLEX
-    
+mode      = 0 
+zoom      = 1.0
+font      = cv2.FONT_HERSHEY_SIMPLEX
+criterion = nn.MSELoss()    
 while True:
     # Capture frame-by-frame
     ret, raw = cap.read()
@@ -170,14 +172,22 @@ while True:
         output = cv2.resize( resized, tsize, interpolation=cv2.INTER_CUBIC )
 
     final = rescale( raw, output )
-    str = "SR 1x1"
-    if nb == 1:   str  = "SR 3x3"
-    if nb == 2:   str  = "SR 9x9"
-    if mode == 0: str += " ESPCN"
-    if mode == 1: str += " NEAREST"
-    if mode == 2: str += " BILINEAR"
-    if mode == 3: str += " BICUBIC"
-    cv2.putText( final, str, (10, final.shape[0]-20), font, 3, (0, 255, 0), 2, cv2.LINE_AA)
+    s = "SR 1x1"
+    if nb == 1:   s  = "SR 3x3"
+    if nb == 2:   s  = "SR 9x9"
+    if mode == 0: s += " ESPCN"
+    if mode == 1: s += " NEAREST"
+    if mode == 2: s += " BILINEAR"
+    if mode == 3: s += " BICUBIC"
+
+    #print (frame.shape )
+    rframe = frame[ 0:tsize[1], 0:tsize[0], :]
+    #print (rframe.shape )
+    mse = ( np.square( (rframe - output) ) ).mean(axis=None)
+    #mse    = criterion( rframe, output )
+    psnr   = 10 * np.log10( 255.0*255.0 / mse ) if mse > 0.0 else math.inf
+    s     += " PSNR "+ str( psnr )
+    cv2.putText( final, s, (10, final.shape[0]-20), font, 2, (0, 255, 0), 2, cv2.LINE_AA)
         
     # Display the resulting frame
     cv2.imshow('frame', final )

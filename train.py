@@ -24,7 +24,8 @@ parser.add_argument('--nEpochs', type=int, default=2, help='number of epochs to 
 parser.add_argument('--lr', type=float, default=0.01, help='Learning Rate. Default=0.01')
 parser.add_argument('--threads', type=int, default=0, help='number of threads for data loader to use')
 parser.add_argument('--seed', type=int, default=123, help='random seed to use. Default=123')
-parser.add_argument('--train_with_coco', type=bool, default=False, help='use COCO data for training' )
+parser.add_argument('--train_path', type=str, default='', help='the path to the train dataset (if not specified, load/use BSDS300 dataset' )
+parser.add_argument('--test_path', type=str, default='', help='the path to the train dataset (if not specified, load/use BSDS300 dataset' )
 parser.add_argument('--model', type=str, default='', help='load a pre-trained model before going on on training' )
 parser.add_argument('--run_name', type=str, default='', help='Gives a name to the run' )
 opt = parser.parse_args()
@@ -44,23 +45,21 @@ device = (
 print(f"===> Using {device} device")
 
 print('===> Loading datasets')
-train_set = get_training_set(opt.upscale_factor, coco=opt.train_with_coco )
-test_set  = get_test_set(opt.upscale_factor)
+train_set = get_training_set(opt.upscale_factor, path=opt.train_path )
+test_set  = get_test_set    (opt.upscale_factor, path=opt.test_path  )
 training_data_loader = DataLoader(dataset=train_set, num_workers=opt.threads, batch_size=opt.batchSize, shuffle=True)
 testing_data_loader = DataLoader(dataset=test_set, num_workers=opt.threads, batch_size=opt.testBatchSize, shuffle=False)
 
 run_name = 'runs/espcn-r'+str(opt.upscale_factor)+'-b'+str(opt.batchSize)
 if opt.run_name != '':  run_name += '-'+opt.run_name
-if opt.train_with_coco: run_name += '-coco'
 print('===> Preparing tensorboard: ' + run_name )
-writer = SummaryWriter(run_name)
+writer   = SummaryWriter(run_name)
 # get some random training images
 dataiter        = iter(training_data_loader)
 inputs, targets = next(dataiter)
-print('inputs.shape=', inputs.shape)
 # create grid of images
-input_grid  = torchvision.utils.make_grid(inputs [0:4])
-target_grid = torchvision.utils.make_grid(targets[0:4])
+input_grid      = torchvision.utils.make_grid(inputs [0:4])
+target_grid     = torchvision.utils.make_grid(targets[0:4])
 # show images
 # matplotlib_imshow(input_grid, one_channel=False)
 # matplotlib_imshow(target_grid, one_channel=False)
