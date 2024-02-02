@@ -175,3 +175,63 @@ chip, GPU 30 cores, with metal 3 device (mps) for COCO with batch size
 64.
 
 > Loss/PSNR graphs
+
+## Remarks
+
+### On the original model
+
+The original paper does not specify that there is a Sigmoid activation
+after the last convolution. Adding it improved the training phase.
+
+### Comparison between ReLU and Tanh activation
+
+We have tried several variations in the number of convolution layers
+and activation functions, for `u` the upscale_factor.
+
+* Chosen model
+```
+Sequantial(
+   Conv2d(1,  64,  (5, 5), (1, 1), (2, 2)), Tanh,
+   Conv2d(64, 32,  (3, 3), (1, 1), (1, 1)), Tanh,
+   Conv2d(32, u*u, (3, 3), (1, 1), (1, 1)), Tanh,
+   PixelShuffle, Sigmoid
+   )		 
+```
+
+* Use ReLU instead of Tanh
+```
+Sequantial(
+   Conv2d(1,  64,  (5, 5), (1, 1), (2, 2)), ReLU,
+   Conv2d(64, 32,  (3, 3), (1, 1), (1, 1)), ReLU,
+   Conv2d(32, u*u, (3, 3), (1, 1), (1, 1)), ReLU,
+   PixelShuffle, ReLU
+   )		 
+```
+
+Training fails completely, and performance is stalled at 13dB.
+
+* Use 4 layers instead of 3 layers, and ReLU instead of Tanh
+```
+Sequantial(
+   Conv2d(1,  64,  (5, 5), (1, 1), (2, 2)), ReLU,
+   Conv2d(64, 64,  (3, 3), (1, 1), (2, 2)), ReLU,   
+   Conv2d(64, 32,  (3, 3), (1, 1), (1, 1)), ReLU,
+   Conv2d(32, u*u, (3, 3), (1, 1), (1, 1)), ReLU,
+   PixelShuffle
+   )		 
+```
+
+Model was competitive with the 3 layers, Tanh + Sigmoid activation
+model, on the BSDS300 database. Using Tanh was blocking training at 19dB.
+
+We did not try to train it with COCO, but it could be an option.
+
+### Using Batch normalization and DropOut
+
+Adding batch normalization and/or DropOut at each layer, before or
+after convolution, or at first or last layer, was slowing learning and
+performance was worse for a small dataset, as well with several
+iterations on COCO.
+
+
+
