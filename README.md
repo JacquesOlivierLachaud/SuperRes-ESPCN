@@ -141,11 +141,11 @@ By default, it trains on
 dataset. You may switch to another dataset by specifying a path to a
 dataset. We have use COCO here.
 
+**Upscale factor 3**
+
 ```
 python train.py --upscale_factor 3 --nEpochs 1000 --train_with_coco True --run_name "stanh" --batchSize 128
 ```
-
-**Upscale factor 3**
 
 It took approximatively 55 minutes per epoch on MacBook Pro, M2 Max chip, GPU 30 cores, with
 metal 3 device (mps) for COCO with batch size 128.
@@ -158,7 +158,20 @@ metal 3 device (mps) for COCO with batch size 128.
 <td> <b>Epoch average test PSNR</b> </td>
 </tr>
 <tr>
-<td> <img src="graphs/epoch average loss.png"> </td>
-<td> <img src="graphs/epoch average psnr.png"> </td>
+<td> <img src="graphs/up3/epoch average loss.png"> </td>
+<td> <img src="graphs/up3/epoch average psnr.png"> </td>
 </tr>
 </table>
+
+**Upscale factor 4**
+
+```
+python train.py --upscale_factor 3 --nEpochs 1000 --train_with_coco True --run_name "stanh" --batchSize 64
+```
+
+
+It took approximatively 28 minutes per epoch on MacBook Pro, M2 Max
+chip, GPU 30 cores, with metal 3 device (mps) for COCO with batch size
+64.
+
+> Loss/PSNR graphs
