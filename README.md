@@ -68,10 +68,10 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <table>
 <tr>
 <td> <b> Original </b> </td>
-<td> <b> ESPCN </b> </td>
-<td> <b> BICUBIC </b> </td>
-<td> <b> BILINEAR </b> </td>
-<td> <b> NEAREST </b> </td>
+<td> <b> ESPCN x3 </b> </td>
+<td> <b> BICUBIC x3</b> </td>
+<td> <b> BILINEAR x3</b> </td>
+<td> <b> NEAREST x3</b> </td>
 </tr>
 <tr>
 <td> <img src="images/mario-yoshi.png"> </td>
@@ -84,10 +84,10 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <table>
 <tr>
 <td> <b> Original </b> </td>
-<td> <b> ESPCN </b> </td>
-<td> <b> BICUBIC </b> </td>
-<td> <b> BILINEAR </b> </td>
-<td> <b> NEAREST </b> </td>
+<td> <b> ESPCN x3</b> </td>
+<td> <b> BICUBIC x3</b> </td>
+<td> <b> BILINEAR x3</b> </td>
+<td> <b> NEAREST x3</b> </td>
 </tr>
 <tr>
 <td> <img src="images/urban.png"> </td>
@@ -100,10 +100,10 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <table>
 <tr>
 <td> <b> Original </b> </td>
-<td> <b> ESPCN </b> </td>
-<td> <b> BICUBIC </b> </td>
-<td> <b> BILINEAR </b> </td>
-<td> <b> NEAREST </b> </td>
+<td> <b> ESPCN x3</b> </td>
+<td> <b> BICUBIC x3</b> </td>
+<td> <b> BILINEAR x3</b> </td>
+<td> <b> NEAREST x3</b> </td>
 </tr>
 <tr>
 <td> <img src="images/papillon.png"> </td>
@@ -113,6 +113,56 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <img src="images/papillon-x3-nearest.png"> </td>
 </tr>
 </table>
+
+<table>
+<tr>
+<td> <b> Original </b> </td>
+<td> <b> ESPCN x4 </b> </td>
+<td> <b> BICUBIC x4</b> </td>
+<td> <b> BILINEAR x4</b> </td>
+<td> <b> NEAREST x4</b> </td>
+</tr>
+<tr>
+<td> <img src="images/mario-yoshi.png"> </td>
+<td> <img src="images/mario-yoshi-up4-espcn.png"> </td>
+<td> <img src="images/mario-yoshi-up4-bicubic.png"> </td>
+<td> <img src="images/mario-yoshi-up4-bilinear.png"> </td>
+<td> <img src="images/mario-yoshi-up4-nearest.png"> </td>
+</tr>
+</table>
+<table>
+<tr>
+<td> <b> Original </b> </td>
+<td> <b> ESPCN x4</b> </td>
+<td> <b> BICUBIC x4</b> </td>
+<td> <b> BILINEAR x4</b> </td>
+<td> <b> NEAREST x4</b> </td>
+</tr>
+<tr>
+<td> <img src="images/urban.png"> </td>
+<td> <img src="images/urban-x4-espcn.png"> </td>
+<td> <img src="images/urban-x4-bicubic.png"> </td>
+<td> <img src="images/urban-x4-bilinear.png"> </td>
+<td> <img src="images/urban-x4-nearest.png"> </td>
+</tr>
+</table>
+<table>
+<tr>
+<td> <b> Original </b> </td>
+<td> <b> ESPCN x4</b> </td>
+<td> <b> BICUBIC x4</b> </td>
+<td> <b> BILINEAR x4</b> </td>
+<td> <b> NEAREST x4</b> </td>
+</tr>
+<tr>
+<td> <img src="images/papillon.png"> </td>
+<td> <img src="images/papillon-x4-espcn.png"> </td>
+<td> <img src="images/papillon-x4-bicubic.png"> </td>
+<td> <img src="images/papillon-x4-bilinear.png"> </td>
+<td> <img src="images/papillon-x4-nearest.png"> </td>
+</tr>
+</table>
+
 
 ### Video camera super-resolution
 
