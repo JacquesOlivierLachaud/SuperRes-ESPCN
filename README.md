@@ -27,15 +27,21 @@ conda install -c conda-forge opencv
 
 ## Pre-trained models
 
-Pre-trained models are in directories `models-up3`, `models-up4`,
-depending on the sought upscale coefficient.
+Pre-trained models are in directories `models`. `x3` stands for upscale factor 3, `x4` stands for upscale factor 4.
 
-* `model-coco-l3-stanh.pth`
+* `model-x3-coco-l3-stanh.pth`
 
-  This model is the original 3-layers, Tanh activation function, final
-  sigmoid, and has been pre-trained on COCO dataset, with 57
-  epochs. Final PSNR was 24.42 dB, compared to 23.8771 dB with bicubic
-  interpolation.
+  This model performs upscale factor 3. It is the original 3-layers,
+  Tanh activation function, final sigmoid, and has been pre-trained on
+  COCO dataset, with 57 epochs, batch_size 128. Final PSNR was 24.42
+  dB, compared to 23.8771 dB with bicubic interpolation.
+
+* `model-x4-coco-l3-stanh.pth`
+
+  This model performs upscale factor 4.  It is the original 3-layers,
+  Tanh activation function, final sigmoid, and has been pre-trained on
+  COCO dataset, with 31 epochs, batch_size 64.  Final PSNR was 23.2711
+  dB, compared to 22.4715 dB with bicubic interpolation.
 
 ## Usage
 
@@ -47,7 +53,10 @@ usage: sr-image.py [-h] --input_image INPUT_IMAGE --model MODEL
                    [--output_filename OUTPUT_FILENAME]
 ```
 
-The upscale factor is determined by the given model. You can also use `interp-image.py` to do super-resolution with a standard interpolation function (NEAREST, BILINEAR, BICUBIC).
+The upscale factor is determined by the given model.
+
+You can also use `interp-image.py` to do super-resolution with a
+standard interpolation function (NEAREST, BILINEAR, BICUBIC).
 
 ```
 python3 interp-image.py
@@ -129,10 +138,13 @@ method. You may use the following keys:
 - '+': zoom-out
 ```
 
+It displays PSNR in real-time.
+
 ## Datasets
 
 We use [COCO](https://cocodataset.org/#home) dataset for training,
-then BSDS300 plus 100 random images from COCO test for testing.
+then BSDS300 plus 100 random images from COCO test dataser for
+testing.
 
 ## Training
 
@@ -147,8 +159,10 @@ dataset. We have use COCO here.
 python train.py --upscale_factor 3 --nEpochs 1000 --train_with_coco True --run_name "stanh" --batchSize 128
 ```
 
-It took approximatively 55 minutes per epoch on MacBook Pro, M2 Max chip, GPU 30 cores, with
-metal 3 device (mps) for COCO with batch size 128.
+It took approximatively 55 minutes per epoch on MacBook Pro, M2 Max
+chip, GPU 30 cores, with metal 3 device (mps) for COCO with batch size
+128.
+
 
 > Loss/PSNR graphs
 
@@ -166,7 +180,7 @@ metal 3 device (mps) for COCO with batch size 128.
 **Upscale factor 4**
 
 ```
-python train.py --upscale_factor 3 --nEpochs 1000 --train_with_coco True --run_name "stanh" --batchSize 64
+python train.py --upscale_factor 4 --nEpochs 1000 --train_with_coco True --run_name "stanh" --batchSize 64
 ```
 
 
@@ -190,7 +204,7 @@ and activation functions, for `u` the upscale_factor.
 
 * Chosen model
 ```
-Sequantial(
+Sequential(
    Conv2d(1,  64,  (5, 5), (1, 1), (2, 2)), Tanh,
    Conv2d(64, 32,  (3, 3), (1, 1), (1, 1)), Tanh,
    Conv2d(32, u*u, (3, 3), (1, 1), (1, 1)), Tanh,
@@ -200,7 +214,7 @@ Sequantial(
 
 * Use ReLU instead of Tanh
 ```
-Sequantial(
+Sequential(
    Conv2d(1,  64,  (5, 5), (1, 1), (2, 2)), ReLU,
    Conv2d(64, 32,  (3, 3), (1, 1), (1, 1)), ReLU,
    Conv2d(32, u*u, (3, 3), (1, 1), (1, 1)), ReLU,
@@ -212,7 +226,7 @@ Training fails completely, and performance is stalled at 13dB.
 
 * Use 4 layers instead of 3 layers, and ReLU instead of Tanh
 ```
-Sequantial(
+Sequential(
    Conv2d(1,  64,  (5, 5), (1, 1), (2, 2)), ReLU,
    Conv2d(64, 64,  (3, 3), (1, 1), (2, 2)), ReLU,   
    Conv2d(64, 32,  (3, 3), (1, 1), (1, 1)), ReLU,
@@ -221,10 +235,12 @@ Sequantial(
    )		 
 ```
 
-Model was competitive with the 3 layers, Tanh + Sigmoid activation
-model, on the BSDS300 database. Using Tanh was blocking training at 19dB.
+Model was competitive with the chosen model (3 layers, Tanh +
+Sigmoid), on the BSDS300 database.
 
 We did not try to train it with COCO, but it could be an option.
+
+> Using Tanh instead of ReLU was blocking training at 19dB.
 
 ### Using Batch normalization and DropOut
 
