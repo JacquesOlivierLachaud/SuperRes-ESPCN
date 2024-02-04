@@ -240,8 +240,6 @@ chip, GPU 30 cores, with metal 3 device (mps) for COCO with batch size
 
 > Loss/PSNR graphs
 
-> Loss/PSNR graphs
-
 <table>
 <tr>
 <td> <b>Epoch average training loss</b> </td>
