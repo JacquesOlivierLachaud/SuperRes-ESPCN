@@ -65,7 +65,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
                        [--output_filename OUTPUT_FILENAME]
 ```
 
-Here are a few results. We compare the super-resolution images with classical interpolation, and with the Geometric Total Variation (GTV) approach, see paper [Geometric Total Variation for Image Vectorization, Zooming and Pixel Art Depixelizing](https://jacquesolivierlachaud.github.io/publication/kerautret-2019-acpr/).
+Here are a few results. We compare the super-resolution images with classical interpolation schemes, and with the Geometric Total Variation (GTV) approach, see paper [Geometric Total Variation for Image Vectorization, Zooming and Pixel Art Depixelizing](https://jacquesolivierlachaud.github.io/publication/kerautret-2019-acpr/).
 
 <table>
 <tr>
