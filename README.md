@@ -14,7 +14,7 @@ implementation](https://github.com/leftthomas/ESPCN).
 - [Anaconda](https://www.anaconda.com/download/)
 - [PyTorch](https://pytorch.org)
 ```
-conda install pytorch torchvision
+conda install -y pytorch torchvision
 ```
 - [TensorBoard](https://www.tensorflow.org/tensorboard)
 ```
@@ -22,7 +22,7 @@ conda install -y -c conda-forge tensorboard
 ```
 - [OpenCV](https://opencv.org)
 ```
-conda install -c conda-forge opencv
+conda install -y -c conda-forge opencv
 ```
 
 ## Pre-trained models
@@ -189,6 +189,19 @@ chip, GPU 30 cores, with metal 3 device (mps) for COCO with batch size
 64.
 
 > Loss/PSNR graphs
+
+> Loss/PSNR graphs
+
+<table>
+<tr>
+<td> <b>Epoch average training loss</b> </td>
+<td> <b>Epoch average test PSNR</b> </td>
+</tr>
+<tr>
+<td> <img src="graphs/up4/epoch average loss.png"> </td>
+<td> <img src="graphs/up4/epoch average psnr.png"> </td>
+</tr>
+</table>
 
 ## Remarks
 
