@@ -65,6 +65,8 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
                        [--output_filename OUTPUT_FILENAME]
 ```
 
+Here are a few results. We compare the super-resolution images with classical interpolation, and with the Geometric Total Variation (GTV) approach, see paper [Geometric Total Variation for Image Vectorization, Zooming and Pixel Art Depixelizing](https://jacquesolivierlachaud.github.io/publication/kerautret-2019-acpr/).
+
 <table>
 <tr>
 <td> <b> Original </b> </td>
@@ -72,6 +74,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> BICUBIC x3</b> </td>
 <td> <b> BILINEAR x3</b> </td>
 <td> <b> NEAREST x3</b> </td>
+<td> <b> GTV x3</b> </td>
 </tr>
 <tr>
 <td> <img src="images/mario-yoshi.png"> </td>
@@ -79,6 +82,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <img src="images/mario-yoshi-up3-bicubic.png"> </td>
 <td> <img src="images/mario-yoshi-up3-bilinear.png"> </td>
 <td> <img src="images/mario-yoshi-up3-nearest.png"> </td>
+<td> <img src="images/mario-yoshi-up3-gtv.png"> </td>
 </tr>
 </table>
 <table>
@@ -88,6 +92,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> BICUBIC x3</b> </td>
 <td> <b> BILINEAR x3</b> </td>
 <td> <b> NEAREST x3</b> </td>
+<td> <b> GTV x3</b> </td>
 </tr>
 <tr>
 <td> <img src="images/urban.png"> </td>
@@ -95,6 +100,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <img src="images/urban-x3-bicubic.png"> </td>
 <td> <img src="images/urban-x3-bilinear.png"> </td>
 <td> <img src="images/urban-x3-nearest.png"> </td>
+<td> <img src="images/urban-x3-gtv.png"> </td>
 </tr>
 </table>
 <table>
@@ -104,6 +110,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> BICUBIC x3</b> </td>
 <td> <b> BILINEAR x3</b> </td>
 <td> <b> NEAREST x3</b> </td>
+<td> <b> GTV x3</b> </td>
 </tr>
 <tr>
 <td> <img src="images/papillon.png"> </td>
@@ -111,6 +118,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <img src="images/papillon-x3-bicubic.png"> </td>
 <td> <img src="images/papillon-x3-bilinear.png"> </td>
 <td> <img src="images/papillon-x3-nearest.png"> </td>
+<td> <img src="images/papillon-x3-gtv.png"> </td>
 </tr>
 </table>
 
@@ -121,6 +129,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> BICUBIC x4</b> </td>
 <td> <b> BILINEAR x4</b> </td>
 <td> <b> NEAREST x4</b> </td>
+<td> <b> GTV x4</b> </td>
 </tr>
 <tr>
 <td> <img src="images/mario-yoshi.png"> </td>
@@ -128,6 +137,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <img src="images/mario-yoshi-up4-bicubic.png"> </td>
 <td> <img src="images/mario-yoshi-up4-bilinear.png"> </td>
 <td> <img src="images/mario-yoshi-up4-nearest.png"> </td>
+<td> <img src="images/mario-yoshi-up4-gtv.png"> </td>
 </tr>
 </table>
 <table>
@@ -137,6 +147,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> BICUBIC x4</b> </td>
 <td> <b> BILINEAR x4</b> </td>
 <td> <b> NEAREST x4</b> </td>
+<td> <b> GTV x4</b> </td>
 </tr>
 <tr>
 <td> <img src="images/urban.png"> </td>
@@ -144,6 +155,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <img src="images/urban-x4-bicubic.png"> </td>
 <td> <img src="images/urban-x4-bilinear.png"> </td>
 <td> <img src="images/urban-x4-nearest.png"> </td>
+<td> <img src="images/urban-x4-gtv.png"> </td>
 </tr>
 </table>
 <table>
@@ -153,6 +165,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <b> BICUBIC x4</b> </td>
 <td> <b> BILINEAR x4</b> </td>
 <td> <b> NEAREST x4</b> </td>
+<td> <b> GTV x4</b> </td>
 </tr>
 <tr>
 <td> <img src="images/papillon.png"> </td>
@@ -160,6 +173,7 @@ usage: interp-image.py [-h] --input_image INPUT_IMAGE [--interpolation INTERPOLA
 <td> <img src="images/papillon-x4-bicubic.png"> </td>
 <td> <img src="images/papillon-x4-bilinear.png"> </td>
 <td> <img src="images/papillon-x4-nearest.png"> </td>
+<td> <img src="images/papillon-x4-gtv.png"> </td>
 </tr>
 </table>
 
