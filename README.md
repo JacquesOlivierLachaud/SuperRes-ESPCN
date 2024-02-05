@@ -317,12 +317,58 @@ We did not try to train it with COCO, but it could be an option.
 
 > Using Tanh instead of ReLU was blocking training at 19dB.
 
+* Use GELU instead of ReLU
+
+Training was slowed and performance were degradated.
+
 ### Using Batch normalization and DropOut
 
 Adding batch normalization and/or DropOut at each layer, before or
 after convolution, or at first or last layer, was slowing learning and
 performance was worse for a small dataset, as well with several
 iterations on COCO.
+
+## Evolution of models through epochs
+
+We display below the evolution of ESPCN single-image super-resolution
+(model 4 layers and ReLU) through the first epochs on a pixel art
+image.
+
+<table>
+<tr>
+<td> <b> ESPCN x4 (e1)</b> </td>
+<td> <b> ESPCN x4 (e2)</b> </td>
+<td> <b> ESPCN x4 (e3)</b> </td>
+<td> <b> ESPCN x4 (e4)</b> </td>
+<td> <b> ESPCN x4 (e5)</b> </td>
+<td> <b> ESPCN x4 (e6)</b> </td>
+</tr>
+<tr>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e1.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e2.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e3.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e4.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e5.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e6.png"> </td>
+</tr>
+<tr>
+<td> <b> ESPCN x4 (e7)</b> </td>
+<td> <b> ESPCN x4 (e8)</b> </td>
+<td> <b> ESPCN x4 (e9)</b> </td>
+<td> <b> ESPCN x4 (e10)</b> </td>
+<td> <b> ESPCN x4 (e11)</b> </td>
+<td> <b> ESPCN x4 (e12)</b> </td>
+</tr>
+<tr>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e7.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e8.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e9.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e10.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e11.png"> </td>
+<td> <img src="images/epochs/mario-yoshi-x4-espcnl4relu-e12.png"> </td>
+</tr>
+</table>
+
 
 
 
