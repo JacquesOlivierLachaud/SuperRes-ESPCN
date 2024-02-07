@@ -43,6 +43,15 @@ Pre-trained models are in directories `models`. `x3` stands for upscale factor 3
   COCO dataset, with 31 epochs, batch_size 64.  Final PSNR was 23.2711
   dB, compared to 22.4715 dB with bicubic interpolation.
 
+* `model-x4-coco-l4-relu.pth`
+
+  This model performs upscale factor 4.  It is a 4-layers, ReLU
+  activation function, and has been pre-trained on COCO dataset, with
+  34 epochs, batch_size 128.  Final PSNR was 23.2800 dB, compared to
+  22.4715 dB with bicubic interpolation.
+
+> To use it, you must copy  `model-l4-relu.py` onto `model.py`
+
 ## Usage
 
 ### Single image super-resolution
@@ -313,7 +322,8 @@ Sequential(
 Model was competitive with the chosen model (3 layers, Tanh +
 Sigmoid), on the BSDS300 database.
 
-We did not try to train it with COCO, but it could be an option.
+We train it with COCO for an upscale of 4, results are identical to
+the previous one.
 
 > Using Tanh instead of ReLU was blocking training at 19dB.
 
